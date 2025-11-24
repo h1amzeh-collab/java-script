@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+
+    <script>
+        // // A popup will appear with the message.
+        // {
+        //     // Asks the user to enter something. if user don't enter any nubmer ,os return 0
+        //     let age = prompt("please enter your age");
+
+        //     // alert()  Shows a message to the user
+        //     alert(`your name of day = ${age * 365}`);
+        // }
+
+        // // JavaScript Fundamentals
+        // //  Variables , Data Types ,Operators ,Conditions ,Loops
+        // {
+        //        let name = "hamzeh"; //  Variables is name , data type is string
+        //     let age = 22; // Variables is age , data type is number
+        //     let isLife = true; // Variables is isLife , data type is boolean
+
+        //     //  + , - , / , * , %
+        //     //  ( + )
+        //     let sum = 5 + 3;
+        //     console.log("5 + 3 =" + sum); // 8
+
+        //     //  ( - )
+        //     let subtract = 10 - 4;
+        //     console.log("10 - 4 =" + subtract); // 6
+
+        //     //  ( * )
+        //     let multiply = 6 * 2;
+        //     console.log("6 * 2 =" + multiply); // 12
+
+        //     //  ( / )
+        //     let divide = 20 / 5;
+        //     console.log("20 / 5 =" + divide); // 4
+
+        //     //  ( % )
+        //     let remainder = 10 % 3;
+        //     console.log("10 % 3 =" + remainder); // 1
+
+
+        //     let message = `
+        //                 Hello Hamzeh,
+        //                 Welcome to JavaScript!
+        //                 This text has multiple lines.
+        //                 `;
+        //     console.log(message); // print all of space
+
+        //     let msg = `My name is ${name} and I am ${age} years old.`;
+        //     document.writeln(msg);
+
+        // }
+
+
+        // {
+        //     var x = 10;
+        //     var x = 20;  // not  Error
+        //     console.log(x);
+
+        //     // let y = 10;
+        //     // let y = 20;
+        //     // console.log(y);
+
+
+        // }
+        // taks 1
+
+        //     var operation = prompt("please enter operation");
+        //     var numberOfUser1 = prompt("please enter number");
+        //     var numberOfUser2 = prompt("please enter number two");
+        //     if(operation === "+")
+        //     console.log(+numberOfUser1 + +numberOfUser2);
+        //     else if(operation === "-")
+        //     console.log(numberOfUser1 - numberOfUser2);
+        //     else if(operation === "/")
+        //     console.log(numberOfUser1 / numberOfUser2);
+        //     else if(operation === "*")
+        //     console.log(numberOfUser1 * numberOfUser2);
+        // document.writeln(operation);
+        // document.writeln(numberOfUser1);
+        // document.writeln(numberOfUser2);
+
+
+        // task 2
+
+        // let mark = prompt("please enter mark");
+        // switch(mark/10){
+        //     case 5:
+        //         console.log("D"); break;
+        //     case 6:
+        //      console.log("C"); break;
+        //      case 7:
+        //         console.log("B"); break;
+        //      case 8:
+        //         console.log("A"); break;
+        //     case 9:
+        //     case 10:
+        //         console.log("A+"); break;
+        //     default:
+        //         console.log("FAILD")
+
+
+        // }
+
+
+        // task 3
+        // let r = prompt("please enter");
+        //     const circle = 2 * Math.PI * r;
+        //      alert(circle);
+
+        // task 4
+
+        // let x = prompt("please enter X");
+        // let y = prompt("please enter Y");
+        // if (x > y) {
+        //     document.writeln("Hello World");
+        //     console.log("Hello World");
+        // }
+        // else {
+        //     document.writeln("Goodbye");
+        //     console.log("Goodbye");
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //         1) What is the for statement in JavaScript ?
+        //             The for loop repeats code a specific number of times.
+        //             You know exactly how many times you want to loop.
+        //               for (initialization; condition; increment) {
+        //                       code to run
+        //                    }
+        document.writeln(`<h2 style='color:red'> For Loop :</h2> `);
+
+        for (let i = 1; i <= 5; i++) {
+            document.writeln(`index = ${i}  <br>`);
+        }
+        document.writeln(`*************************************** <br> <br>`);
+
+
+
+        //         2) What is the while statement in JavaScript?
+        //            The while loop repeats code as long as the condition is true.
+        //            You don’t know the number of repetitions — the condition controls it.
+        //             while (condition) {
+        //              code
+        //            }
+
+        let i = 1;
+        document.writeln(`<h2 style='color:red'> while Loop :</h2> `);
+        while (i <= 5) {
+            document.writeln(`index = ${i}  <br>`);
+            i++;
+        }
+        document.writeln(`*************************************** <br> <br>`);
+
+
+        //                     3) What is the do...while statement in JavaScript?
+        //                        The do…while loop is just like while, BUT:
+        //                        It always runs at least one time (even if the condition is false)
+        //                          do {
+        //                              // code
+        //                          } while (condition);
+        i = 1;
+        document.writeln(`<h2 style='color:red'> Do - While Loop :</h2> `);
+        do {
+            document.writeln(`index = ${i}  <br>`);
+            i++;
+        } while (i <= 5);
+        document.writeln(`*************************************** <br> <br>`);
+
+
+
+
+        //                   4) What is a Function?                                      
+        //                     A function is a block of code that:
+        //                     ✔ performs a specific task
+        //                     ✔ can be reused any time
+        //                     ✔ helps keep code clean and organized
+        //                      function name() {
+        //                           code
+        //                      }
+        document.writeln(`<h2 style='color:red'> Function :</h2> `);
+
+        function sayHello() {
+            document.writeln(`Hello function <br>`);
+
+        }
+        sayHello();  // calling the function
+
+
+
+        // 1) Array in JavaScript
+        // An Array is a special variable that can store multiple values.
+        // 1. array.length
+        // Returns number of items.
+        // 2. array.toString()
+        // Converts array to comma-separated string.
+        // 3. array.pop()
+        // Removes last element.
+        // 4. array.push()
+        // Adds item to the end.
+        // 5. array.shift()
+        // Removes first element.
+        // 6. array.unshift()
+        // Adds item to   the start.
+        // 7. array.join()
+        // Joins array with custom separator.
+
+
+
+        document.writeln(`*************************************** <br> <br>`);
+        let fruits = ["Apple", "Banana", "Orange", 2, 9, 7.60];
+        document.writeln(`length = ${fruits.length}  <br>`); // 6
+        document.writeln(`toString = ${fruits.toString()} <br>`); // "Apple,Banana,Orange ,2,9,7.60 
+
+        let remove_60 = fruits.pop();  // remove = 7.60 and return 7.60
+        document.writeln(`length = ${fruits.length}  <br>`); // 5 after pop()
+
+        fruits.push(20);  // add 20
+        document.writeln(`toString after push = ${fruits.toString()} <br>`); // "Apple,Banana,Orange ,2,9,20 
+        document.writeln(`length = ${fruits.length}  <br>`); // 6 after add 20
+
+        fruits.shift(); // remove 9
+        document.writeln(`toString after shift = ${fruits.toString()} <br>`); // "Banana,Orange ,2,9,20 
+        document.writeln(`length after shift = ${fruits.length} <br>`); // 5
+
+        fruits.unshift("Kiwi");
+        document.writeln(`toString after unshift = ${fruits.toString()} <br>`); // "Kiwi,Banana,Orange ,2,9,20 
+        document.writeln(`length after unshift  = ${fruits.length} <br>`); // 6
+
+
+        document.writeln("join = " + fruits.join(" - ")); // "Apple - Banana - Orange"
+
+        /*
+        hosting var 
+        function hosting
+        */
+        let fullName = "hamzeh hamzeh mosa";
+
+        // trim methods
+        console.log("trim():", "   hamzeh hamzeh mosa   ".trim());
+        console.log("trimStart():", "   hamzeh hamzeh mosa".trimStart());
+        console.log("trimEnd():", "hamzeh hamzeh mosa   ".trimEnd());
+
+        // pad methods
+        console.log("padStart():", fullName.padStart(25, "*"));
+        console.log("padEnd():", fullName.padEnd(25, "*"));
+
+        // charAt / charCodeAt
+        console.log("charAt(0):", fullName.charAt(0));
+        console.log("charCodeAt(0):", fullName.charCodeAt(0));
+
+        // split
+        console.log("split(' '):", fullName.split(" "));
+
+        // length
+        console.log("length:", fullName.length);
+
+        // slice / substring / substr
+        console.log("slice(0, 6):", fullName.slice(0, 6));
+        console.log("slice(-4):", fullName.slice(-4));
+        console.log("substring(0, 6):", fullName.substring(0, 6));
+        console.log("substr(0, 6):", fullName.substr(0, 6)); // deprecated
+
+        // replace / replaceAll
+        console.log("replace():", fullName.replace("hamzeh", "HAMZEH"));
+        console.log("replaceAll():", fullName.replaceAll("hamzeh", "HAMZEH"));
+
+        // upper & lower
+        console.log("toUpperCase():", fullName.toUpperCase());
+        console.log("toLowerCase():", fullName.toLowerCase());
+
+        // concat
+        console.log("concat():", fullName.concat(" Jr"));
+
+        // indexOf / lastIndexOf
+        console.log("indexOf('hamzeh'):", fullName.indexOf("hamzeh"));
+        console.log("lastIndexOf('hamzeh'):", fullName.lastIndexOf("hamzeh"));
+
+        // search
+        console.log("search(/m/):", fullName.search(/m/));
+
+        // match / matchAll
+        console.log("match(/h/g):", fullName.match(/h/g));
+        console.log("matchAll(/h/g):", [...fullName.matchAll(/h/g)]);
+
+        // includes / startsWith / endsWith
+        console.log("includes('mosa'):", fullName.includes("mosa"));
+        console.log("startsWith('hamzeh'):", fullName.startsWith("hamzeh"));
+        console.log("endsWith('mosa'):", fullName.endsWith("mosa"));
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

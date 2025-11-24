@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 1
+        let inputMonth = prompt("please enter mount");
+        switch (+inputMonth) {
+            case 1: alert("January"); break;
+            case 2: alert("February"); break;
+            case 3: alert("March"); break;
+            case 4: alert("April"); break;
+            case 5: alert("May"); break;
+            case 6: alert("June"); break;
+            case 7: alert("July"); break;
+            case 8: alert("August"); break;
+            case 9: alert("September"); break;
+            case 10: alert("October"); break;
+            case 11: alert("November"); break;
+            case 12: alert("December"); break;
+        }
+
+        // 2    
+        for (let i = 1, count = 1; i <= 10; count++) {
+            for (let y = 1; y <= count; y++, i++) {
+                document.writeln(`${i}`);
+            }
+            document.writeln(`<br>`);
+        }
+        document.writeln(`<br> <br>`);
+
+        // 3
+        for (let i = 1; i <= 1000; i++) {
+            if (i % 13 === 0)
+                document.writeln(`${i}`);
+        }
+
+        // 4
+        function multiplication2(numberOne, numberTwo) {
+            return numberOne * numberTwo;
+        }
+
+        // 5
+        function triangleArea(base, height) {
+            return 0.5 * base * height;
+        }
+
+        // 6
+        function pandigital(number) {
+            let unique = new Set(number + "".split(""));
+            for (let i = 1; i <= 9; i++) {
+                if (!unique.has(String(i)))
+                    return false;
+            }
+            return true;
+        }
+
+        // 7 
+        let inputFruit = prompt("please enter fruit");
+        switch (inputFruit.toLowerCase()) {
+            case 'banana':
+            case 'موز':
+                price = 20;
+                break;
+            case 'orange':
+            case 'برتقال':
+                price = 15;
+                break;
+            case 'apple':
+            case 'تفاح':
+                price = 18;
+                break;
+            case 'mango':
+            case 'مانجا':
+                price = 25;
+                break;
+            case 'strawberry':
+            case 'فراولة':
+                price = 22;
+                break;
+            case 'pineapple':
+            case 'اناناس':
+            case 'أناناس':
+                price = 24;
+                break;
+            case 'lemon':
+            case 'ليمون':
+                price = 12;
+                break;
+            case 'grape':
+            case 'عنب':
+                price = 19;
+                break;
+            case 'kiwi':
+            case 'كيوي':
+                price = 21;
+                break;
+            case 'watermelon':
+            case 'بطيخ':
+                price = 17;
+                break;
+            default:
+                alert(`Sorry — ${inputFruit} is not in the menu.`);
+        }
+
+        alert(`The price of a ${inputFruit} drink is ${price} dollars`);
+
+        // 8
+        function fullName(firstName, lastName) {
+            return firstName + " " + lastName;
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
