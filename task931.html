@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+
+    <form id="registerForm">
+
+        <!-- First Name -->
+        <label>First Name:</label><br>
+        <input type="text" id="firstName" required><br><br>
+
+        <!-- Last Name -->
+        <label>Last Name:</label><br>
+        <input type="text" id="lastName" required><br><br>
+
+        <!-- Email -->
+        <label>Email:</label><br>
+        <input type="email" id="email" required><br><br>
+
+        <!-- Password -->
+        <label>Password:</label><br>
+        <input type="password" id="password" required><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <br>
+    <a href="task932.html">Already have an account? Login</a>
+
+    <script>
+        let formReg = document.querySelector("#registerForm");
+
+        formReg[4].addEventListener("click",function(event){
+            
+            let dataRegister = {};
+            dataRegister.firstName = formReg[0].value;
+            dataRegister.lastName = formReg[1].value;
+            dataRegister.email = formReg[2].value;
+            dataRegister.password = formReg[3].value;
+            
+            localStorage.setItem(localStorage.length,JSON.stringify(dataRegister));
+            console.log("sdssss");
+        })
+    </script>
+
+</body>
+</html>

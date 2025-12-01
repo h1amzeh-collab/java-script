@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+
+
+
+
+    <script>
+        let form = document.createElement("form");
+
+
+        let formInputFirstName = document.createElement("input");
+        formInputFirstName.type = "text";
+        formInputFirstName.placeholder = "First Name";
+        let spanFirstName = document.createElement("span");
+        let br1 = document.createElement("br");
+
+
+
+        let formInputLastName = document.createElement("input");
+        formInputLastName.type = "text";
+        formInputLastName.placeholder = "Last Name";
+        let spanLastName = document.createElement("span");
+        let br2 = document.createElement("br");
+
+
+        let formInputDate = document.createElement("input");
+        formInputDate.type = "date";
+        let spanDate = document.createElement("span");
+        let br3 = document.createElement("br");
+
+
+        let formInputEmail = document.createElement("input");
+        formInputEmail.type = "email";
+        formInputEmail.placeholder = "Email";
+        let spanEmail = document.createElement("span");
+        let br4 = document.createElement("br");
+
+
+
+        let formInputPassword = document.createElement("input");
+        formInputPassword.type = "password";
+        formInputPassword.placeholder = "Password";
+        let spanPassword = document.createElement("span");
+        let br5 = document.createElement("br");
+
+        let formInputPasswordConfirmation = document.createElement("input");
+        formInputPasswordConfirmation.type = "password";
+        formInputPasswordConfirmation.placeholder = "Password";
+        let spanPasswordConfirmation = document.createElement("span");
+        let br6 = document.createElement("br");
+
+        let formInputMobile = document.createElement("input");
+        formInputMobile.type = "text";
+        formInputMobile.placeholder = "07";
+        let spanMobile = document.createElement("span");
+        let br7 = document.createElement("br");
+
+        let formInputsubmit = document.createElement("button");
+        formInputsubmit.textContent = "log in";
+        let br8 = document.createElement("br");
+
+
+        form.append(
+            formInputFirstName,
+            spanFirstName,
+            br1,
+            formInputLastName,
+            spanLastName,
+            br2,
+            formInputDate,
+            spanDate,
+            br3,
+            formInputEmail,
+            spanEmail,
+            br4,
+            formInputPassword,
+            spanPassword,
+            br5,
+            formInputPasswordConfirmation,
+            spanPasswordConfirmation,
+            br6,
+            formInputMobile,
+            spanMobile,
+            br7,
+            formInputsubmit,
+            br8,
+
+        );
+
+        let student = {};
+
+        document.body.appendChild(form);
+        // document.body.appendChild(formInputsubmit);
+
+        let input = document.querySelectorAll("input");
+        input.forEach((el, key) => {
+            // el.style.display = "block";
+            el.style.margin = "12px 4px";
+        });
+        let goStore = false;
+        let rullName = /^[a-z]+$/i;
+
+        formInputFirstName.addEventListener("input", () => {
+            if (formInputFirstName.value.length === 0) {
+                spanFirstName.textContent = "should be at least one letter";
+                spanFirstName.style.color = "red";
+                delete student.first;
+                goStore = false;
+            }
+            else if (!rullName.test(formInputFirstName.value)) {
+                spanFirstName.textContent = "should be letters english only";
+                spanFirstName.style.color = "red";
+                delete student.first;
+                goStore = false;
+
+            }
+            else {
+                spanFirstName.textContent = ""
+                student.first = formInputFirstName.value;
+                goStore = true;
+
+            }
+        });
+        formInputLastName.addEventListener("input", () => {
+            if (formInputLastName.value.length === 0) {
+                spanLastName.textContent = "should be at least one letter";
+                spanLastName.style.color = "red";
+                delete student.last;
+                goStore = false;
+
+            }
+            else if (!rullName.test(formInputLastName.value)) {
+                spanLastName.textContent = "should be letters english only";
+                spanLastName.style.color = "red";
+                delete student.last;
+                goStore = false;
+
+            }
+            else {
+                spanLastName.textContent = ""
+                student.last = formInputLastName.value;
+                goStore = true;
+            }
+        });
+
+        let rullDate = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+        formInputDate.addEventListener("input", () => {
+
+            if (!rullDate.test(formInputDate.value)) {
+                spanDate.textContent = "Date must be in format dd-mm-yyyy";
+                console.log("ddd")
+                spanDate.style.color = "red";
+                delete student.date;
+                goStore = false;
+
+            }
+            else {
+                spanDate.textContent = ""
+                student.date = formInputDate.value;
+                goStore = true;
+            }
+        });
+
+        let rullEmail = /^[a-zA-Z]+\.[a-zA-Z]+@gmail\.com$/;
+        formInputEmail.addEventListener("input", () => {
+            if (formInputEmail.value.length === 0) {
+                spanEmail.textContent = "should be email";
+                spanEmail.style.color = "red";
+                delete student.email;
+                goStore = false;
+
+            }
+            else if (!rullEmail.test(formInputEmail.value.trim())) {
+                spanEmail.textContent = "should be email correct";
+                spanEmail.style.color = "red";
+                delete student.email;
+                goStore = false;
+
+            }
+            else {
+                spanEmail.textContent = ""
+                student.email = formInputEmail.value;
+                if (student.email !== "") {
+                    goStore = true;
+                }
+            }
+        });
+
+        let capitalLetter = /^[A-Z]/;
+        let numbers = /(\d.*\d)/;
+        let specialChar = /[!@#$%^&*(),.?":{}|<>]/;
+
+        formInputPassword.addEventListener("input", () => {
+            if (formInputPassword.value.length === 0) {
+                spanPassword.textContent = "should be pasword";
+                spanPassword.style.color = "red";
+                delete student.password;
+                goStore = false;
+
+            }
+            else if (!capitalLetter.test(formInputPassword.value.trim()) ||
+                !numbers.test(formInputPassword.value.trim()) ||
+                !specialChar.test(formInputPassword.value.trim())
+            ) {
+                spanPassword.textContent = "should be pasword correct";
+                spanPassword.style.color = "red";
+                delete student.password;
+                goStore = false;
+
+            }
+            else if (formInputPassword.value.length < 8) {
+                spanPassword.textContent = "should be pasword at least 8";
+                spanPassword.style.color = "red";
+                delete student.password;
+                goStore = false;
+            }
+            else {
+                spanPassword.textContent = ""
+                student.password = formInputPassword.value;
+                if (formInputPassword.value !== "") {
+                    goStore = true;
+                }
+            }
+        });
+
+        formInputPasswordConfirmation.addEventListener("input", () => {
+            if (formInputPassword.value !== formInputPasswordConfirmation.value) {
+                spanPasswordConfirmation.textContent = "should be pasword correct";
+                spanPasswordConfirmation.style.color = "red";
+                goStore = false;
+                console.log("no")
+            }
+            else {
+                spanPasswordConfirmation.textContent = ""
+                goStore = true;
+                console.log("yes")
+
+
+            }
+        });
+
+        let rullMobile = /^07[7-8-9][0-9]{7}$/;
+
+        formInputMobile.addEventListener("input", () => {
+            if (!rullMobile.test(formInputMobile.value)) {
+                spanMobile.textContent = "must be in format 07x-xxxxxxx";
+                spanMobile.style.color = "red";
+                delete student.mobile;
+                goStore = false;
+            } else {
+                spanMobile.textContent = "";
+                student.mobile = formInputMobile.value;
+                goStore = true;
+            }
+        });
+
+        formInputsubmit.addEventListener("click", function () {
+            if (goStore) {
+
+                if (formInputEmail.value.trim() !== "") {
+
+                    for (let i = 0; i < localStorage.length; i++) {
+                        if (JSON.parse(localStorage.getItem(localStorage.key(i))).email === student.email) {
+                            goStore = false;
+                        }
+                    }
+
+                    if (goStore) {
+                        alert("Student stored successfully!");
+                        localStorage.setItem(`${localStorage.length}`, JSON.stringify(student));
+                    }
+                    else {
+                        alert("Found email, cannot store duplicate");
+                    }
+
+                } else {
+                    alert("Error: invalid input or empty email");
+                }
+
+            } else {
+                alert("Error: syntax");
+            }
+        })
+
+          
+
+    </script>
+
+</body>
+
+</html>

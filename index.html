@@ -5,13 +5,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body>
+<body onafterprint="alert('Print finished!')">
 
+
+    <!-- 
+    <select onchange="document.writeln('Value changed!')">
+        <option>Apple</option>
+        <option>Banana</option>
+    </select>
+
+
+
+    <button onclick="alert('Clicked!')">Click Me</button>
+
+    <div onmouseover="console.log('Mouse entered')">
+        Hover here
+    </div>
+
+    <input onkeydown="console.log('Key pressed')" />
+
+    <body onload="console.log('Page Loaded!')"></body>
+
+    <div id="box" class="animate">box</div>
+    <input oninput="console.log(this.value)" />
+
+    <details ontoggle="console.log('Toggled!')">
+        <summary>More info</summary>
+        Text appears here...
+    </details>
+    <button id="btn">Toggle Navbar</button>
+    <nav id="navbar" style="display: none; background: #333; color: #fff; padding: 10px;">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav> -->
+    <div id="slider" style="width:300px; overflow:hidden;">
+        <div id="slides" style="display:flex; width:900px; transition:0.5s;">
+            <div style="width:300px; height: 300px; background:red;">Slide 1</div>
+            <div style="width:300px; height: 300px; background:green;">Slide 2</div>
+            <div style="width:300px; height: 300px; background:blue;">Slide 3</div>
+        </div>
+    </div>
+
+    <button id="next">Next</button>
     <script>
+
+        let index = 0;
+        const slides = document.getElementById("slides");
+
+        document.getElementById("next").addEventListener("click", () => {
+            index++;
+            if (index > 2) index = 0; // Loop
+            slides.style.transform = `translateX(${-300 * index}px)`;
+        });
+
+        // const btn = document.getElementById("btn");
+        // const navbar = document.getElementById("navbar");
+
+        // btn.addEventListener("click", () => {
+        //     if (navbar.style.display === "none") {
+        //         navbar.style.display = "block";
+        //     } else {
+        //         navbar.style.display = "none";
+        //     }
+        // });
+
+        // document.getElementById("box").addEventListener("animationend", () => {
+        //     console.log("Animation finished!");
+        // });
+        // document.addEventListener("animationiteration", () => {
+        //     console.log("Animation repeated!");
+        // });
+
+
+
+
+
         // // A popup will appear with the message.
         // {
         //     // Asks the user to enter something. if user don't enter any nubmer ,os return 0
@@ -155,69 +228,69 @@
 
 
 
-        //         1) What is the for statement in JavaScript ?
-        //             The for loop repeats code a specific number of times.
-        //             You know exactly how many times you want to loop.
-        //               for (initialization; condition; increment) {
-        //                       code to run
-        //                    }
-        document.writeln(`<h2 style='color:red'> For Loop :</h2> `);
+        // //         1) What is the for statement in JavaScript ?
+        // //             The for loop repeats code a specific number of times.
+        // //             You know exactly how many times you want to loop.
+        // //               for (initialization; condition; increment) {
+        // //                       code to run
+        // //                    }
+        // document.writeln(`<h2 style='color:red'> For Loop :</h2> `);
 
-        for (let i = 1; i <= 5; i++) {
-            document.writeln(`index = ${i}  <br>`);
-        }
-        document.writeln(`*************************************** <br> <br>`);
-
-
-
-        //         2) What is the while statement in JavaScript?
-        //            The while loop repeats code as long as the condition is true.
-        //            You don’t know the number of repetitions — the condition controls it.
-        //             while (condition) {
-        //              code
-        //            }
-
-        let i = 1;
-        document.writeln(`<h2 style='color:red'> while Loop :</h2> `);
-        while (i <= 5) {
-            document.writeln(`index = ${i}  <br>`);
-            i++;
-        }
-        document.writeln(`*************************************** <br> <br>`);
-
-
-        //                     3) What is the do...while statement in JavaScript?
-        //                        The do…while loop is just like while, BUT:
-        //                        It always runs at least one time (even if the condition is false)
-        //                          do {
-        //                              // code
-        //                          } while (condition);
-        i = 1;
-        document.writeln(`<h2 style='color:red'> Do - While Loop :</h2> `);
-        do {
-            document.writeln(`index = ${i}  <br>`);
-            i++;
-        } while (i <= 5);
-        document.writeln(`*************************************** <br> <br>`);
+        // for (let i = 1; i <= 5; i++) {
+        //     document.writeln(`index = ${i}  <br>`);
+        // }
+        // document.writeln(`*************************************** <br> <br>`);
 
 
 
+        // //         2) What is the while statement in JavaScript?
+        // //            The while loop repeats code as long as the condition is true.
+        // //            You don’t know the number of repetitions — the condition controls it.
+        // //             while (condition) {
+        // //              code
+        // //            }
 
-        //                   4) What is a Function?                                      
-        //                     A function is a block of code that:
-        //                     ✔ performs a specific task
-        //                     ✔ can be reused any time
-        //                     ✔ helps keep code clean and organized
-        //                      function name() {
-        //                           code
-        //                      }
-        document.writeln(`<h2 style='color:red'> Function :</h2> `);
+        // let i = 1;
+        // document.writeln(`<h2 style='color:red'> while Loop :</h2> `);
+        // while (i <= 5) {
+        //     document.writeln(`index = ${i}  <br>`);
+        //     i++;
+        // }
+        // document.writeln(`*************************************** <br> <br>`);
 
-        function sayHello() {
-            document.writeln(`Hello function <br>`);
 
-        }
-        sayHello();  // calling the function
+        // //                     3) What is the do...while statement in JavaScript?
+        // //                        The do…while loop is just like while, BUT:
+        // //                        It always runs at least one time (even if the condition is false)
+        // //                          do {
+        // //                              // code
+        // //                          } while (condition);
+        // i = 1;
+        // document.writeln(`<h2 style='color:red'> Do - While Loop :</h2> `);
+        // do {
+        //     document.writeln(`index = ${i}  <br>`);
+        //     i++;
+        // } while (i <= 5);
+        // document.writeln(`*************************************** <br> <br>`);
+
+
+
+
+        // //                   4) What is a Function?
+        // //                     A function is a block of code that:
+        // //                     ✔ performs a specific task
+        // //                     ✔ can be reused any time
+        // //                     ✔ helps keep code clean and organized
+        // //                      function name() {
+        // //                           code
+        // //                      }
+        // document.writeln(`<h2 style='color:red'> Function :</h2> `);
+
+        // function sayHello() {
+        //     document.writeln(`Hello function <br>`);
+
+        // }
+        // sayHello();  // calling the function
 
 
 
@@ -240,92 +313,90 @@
 
 
 
-        document.writeln(`*************************************** <br> <br>`);
-        let fruits = ["Apple", "Banana", "Orange", 2, 9, 7.60];
-        document.writeln(`length = ${fruits.length}  <br>`); // 6
-        document.writeln(`toString = ${fruits.toString()} <br>`); // "Apple,Banana,Orange ,2,9,7.60 
+        // document.writeln(`*************************************** <br> <br>`);
+        // let fruits = ["Apple", "Banana", "Orange", 2, 9, 7.60];
+        // document.writeln(`length = ${fruits.length}  <br>`); // 6
+        // document.writeln(`toString = ${fruits.toString()} <br>`); // "Apple,Banana,Orange ,2,9,7.60
 
-        let remove_60 = fruits.pop();  // remove = 7.60 and return 7.60
-        document.writeln(`length = ${fruits.length}  <br>`); // 5 after pop()
+        // let remove_60 = fruits.pop();  // remove = 7.60 and return 7.60
+        // document.writeln(`length = ${fruits.length}  <br>`); // 5 after pop()
 
-        fruits.push(20);  // add 20
-        document.writeln(`toString after push = ${fruits.toString()} <br>`); // "Apple,Banana,Orange ,2,9,20 
-        document.writeln(`length = ${fruits.length}  <br>`); // 6 after add 20
+        // fruits.push(20);  // add 20
+        // document.writeln(`toString after push = ${fruits.toString()} <br>`); // "Apple,Banana,Orange ,2,9,20
+        // document.writeln(`length = ${fruits.length}  <br>`); // 6 after add 20
 
-        fruits.shift(); // remove 9
-        document.writeln(`toString after shift = ${fruits.toString()} <br>`); // "Banana,Orange ,2,9,20 
-        document.writeln(`length after shift = ${fruits.length} <br>`); // 5
+        // fruits.shift(); // remove 9
+        // document.writeln(`toString after shift = ${fruits.toString()} <br>`); // "Banana,Orange ,2,9,20
+        // document.writeln(`length after shift = ${fruits.length} <br>`); // 5
 
-        fruits.unshift("Kiwi");
-        document.writeln(`toString after unshift = ${fruits.toString()} <br>`); // "Kiwi,Banana,Orange ,2,9,20 
-        document.writeln(`length after unshift  = ${fruits.length} <br>`); // 6
+        // fruits.unshift("Kiwi");
+        // document.writeln(`toString after unshift = ${fruits.toString()} <br>`); // "Kiwi,Banana,Orange ,2,9,20
+        // document.writeln(`length after unshift  = ${fruits.length} <br>`); // 6
 
 
-        document.writeln("join = " + fruits.join(" - ")); // "Apple - Banana - Orange"
+        // document.writeln("join = " + fruits.join(" - ")); // "Apple - Banana - Orange"
 
-        /*
-        hosting var 
-        function hosting
-        */
-        let fullName = "hamzeh hamzeh mosa";
+        // /*
+        // hosting var
+        // function hosting
+        // */
+        // let fullName = "hamzeh hamzeh mosa";
 
-        // trim methods
-        console.log("trim():", "   hamzeh hamzeh mosa   ".trim());
-        console.log("trimStart():", "   hamzeh hamzeh mosa".trimStart());
-        console.log("trimEnd():", "hamzeh hamzeh mosa   ".trimEnd());
+        // // trim methods
+        // console.log("trim():", "   hamzeh hamzeh mosa   ".trim());
+        // console.log("trimStart():", "   hamzeh hamzeh mosa".trimStart());
+        // console.log("trimEnd():", "hamzeh hamzeh mosa   ".trimEnd());
 
-        // pad methods
-        console.log("padStart():", fullName.padStart(25, "*"));
-        console.log("padEnd():", fullName.padEnd(25, "*"));
+        // // pad methods
+        // console.log("padStart():", fullName.padStart(25, "*"));
+        // console.log("padEnd():", fullName.padEnd(25, "*"));
 
-        // charAt / charCodeAt
-        console.log("charAt(0):", fullName.charAt(0));
-        console.log("charCodeAt(0):", fullName.charCodeAt(0));
+        // // charAt / charCodeAt
+        // console.log("charAt(0):", fullName.charAt(0));
+        // console.log("charCodeAt(0):", fullName.charCodeAt(0));
 
-        // split
-        console.log("split(' '):", fullName.split(" "));
+        // // split
+        // console.log("split(' '):", fullName.split(" "));
 
-        // length
-        console.log("length:", fullName.length);
+        // // length
+        // console.log("length:", fullName.length);
 
-        // slice / substring / substr
-        console.log("slice(0, 6):", fullName.slice(0, 6));
-        console.log("slice(-4):", fullName.slice(-4));
-        console.log("substring(0, 6):", fullName.substring(0, 6));
-        console.log("substr(0, 6):", fullName.substr(0, 6)); // deprecated
+        // // slice / substring / substr
+        // console.log("slice(0, 6):", fullName.slice(0, 6));
+        // console.log("slice(-4):", fullName.slice(-4));
+        // console.log("substring(0, 6):", fullName.substring(0, 6));
+        // console.log("substr(0, 6):", fullName.substr(0, 6)); // deprecated
 
-        // replace / replaceAll
-        console.log("replace():", fullName.replace("hamzeh", "HAMZEH"));
-        console.log("replaceAll():", fullName.replaceAll("hamzeh", "HAMZEH"));
+        // // replace / replaceAll
+        // console.log("replace():", fullName.replace("hamzeh", "HAMZEH"));
+        // console.log("replaceAll():", fullName.replaceAll("hamzeh", "HAMZEH"));
 
-        // upper & lower
-        console.log("toUpperCase():", fullName.toUpperCase());
-        console.log("toLowerCase():", fullName.toLowerCase());
+        // // upper & lower
+        // console.log("toUpperCase():", fullName.toUpperCase());
+        // console.log("toLowerCase():", fullName.toLowerCase());
 
-        // concat
-        console.log("concat():", fullName.concat(" Jr"));
+        // // concat
+        // console.log("concat():", fullName.concat(" Jr"));
 
-        // indexOf / lastIndexOf
-        console.log("indexOf('hamzeh'):", fullName.indexOf("hamzeh"));
-        console.log("lastIndexOf('hamzeh'):", fullName.lastIndexOf("hamzeh"));
+        // // indexOf / lastIndexOf
+        // console.log("indexOf('hamzeh'):", fullName.indexOf("hamzeh"));
+        // console.log("lastIndexOf('hamzeh'):", fullName.lastIndexOf("hamzeh"));
 
-        // search
-        console.log("search(/m/):", fullName.search(/m/));
+        // // search
+        // console.log("search(/m/):", fullName.search(/m/));
 
-        // match / matchAll
-        console.log("match(/h/g):", fullName.match(/h/g));
-        console.log("matchAll(/h/g):", [...fullName.matchAll(/h/g)]);
+        // // match / matchAll
+        // console.log("match(/h/g):", fullName.match(/h/g));
+        // console.log("matchAll(/h/g):", [...fullName.matchAll(/h/g)]);
 
-        // includes / startsWith / endsWith
-        console.log("includes('mosa'):", fullName.includes("mosa"));
-        console.log("startsWith('hamzeh'):", fullName.startsWith("hamzeh"));
-        console.log("endsWith('mosa'):", fullName.endsWith("mosa"));
-
+        // // includes / startsWith / endsWith
+        // console.log("includes('mosa'):", fullName.includes("mosa"));
+        // console.log("startsWith('hamzeh'):", fullName.startsWith("hamzeh"));
+        // console.log("endsWith('mosa'):", fullName.endsWith("mosa"));
 
 
 
     </script>
-
 
 </body>
 

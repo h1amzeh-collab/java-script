@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <!--1-->
+    <div class="hover" style="text-align: center; width: fit-content; padding: 7px 50px;">Hello world! </div>
+    <br><br><br>
+
+
+    <!--2-->
+    <select id="countries">
+        <option value="" disabled selected>Select a country</option>
+        <option value="jordan">jordan</option>
+        <option value="phlasten">phlasten</option>
+        <option value="syrio">syrio</option>
+    </select>
+    <br><br>
+
+    <img style="width: 400px; height: 200px; display: none;" src="" alt=""><br><br>
+
+
+
+    <!--3-->
+    <form action="" class="form-password">
+        <label for="">password &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;</label>
+        <input type="password"><span class="span-password"></span><br><br>
+        <label for="">Repeat Password &nbsp;</label>
+        <input type="password"> <span class="span-password"></span>
+    </form><br><br>
+
+
+    <!--4-->
+    <div class="box" style="width: 500px;">
+        <div class="content">
+            <h2>What is lorem ipsum?</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit</p>
+            <span><a href="#">show</a></span>
+        </div>
+        <div class="content">s
+            <h2>What is lorem ipsum?</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, dicta! Maxime odio, facilis ipsam
+                placeat voluptatem, illo fugiat nam veritatis magni alias delectus fuga non nostrum sapiente, optio
+                accusantium veniam?
+            </p>
+            <span><a href="#">show</a></span>
+        </div>
+        <div class="content">
+            <h2>What is lorem ipsum?</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit</p>
+            <span><a href="#">show</a></span>
+        </div>
+    </div> <br><br><br>
+
+    <!--5-->
+    <form action="" class="change-text">
+        <select name="" id="">
+            <option value="Arial">Arial</option>
+            <option value="Roman">Roman</option>
+            <option value="Courier">Courier </option>
+            <option value="Verdana">Verdana </option>
+            <option value="Nosifer">Nosifer </option>
+        </select> &nbsp;&nbsp;
+        <input type="number">&nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="checkbox" name="Italic" value="Italic"> Italic &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="checkbox" name="Bold"> Bold &nbsp;&nbsp; &nbsp;&nbsp;
+        <input type="checkbox" name="UnderLine"> UnderLine
+        <br><br><br>
+        <textarea style="width: 500px; height: 150px;"></textarea>
+    </form>
+
+
+
+    <!--6-->
+    <br><br><br>
+    <div class="animation" style="background-color: black;"></div>
+
+    <script>
+        let animationColor = document.querySelector(".animation");
+        animationColor.style.width = "300px";
+        animationColor.style.height = "300px";
+        const colors = ["red", "black", "green", "yellow"];
+
+        let targetTime = prompt("please enter what you want time to change color");
+        let current = 0;
+        setInterval(() => {
+            animationColor.style.backgroundColor = colors[current];
+            current++;
+            if (current >= colors.length) current = 0;
+        }, +targetTime * 1000)
+
+
+
+        // ex : 1
+        let hover = document.querySelector(".hover");
+        hover.addEventListener("mouseenter", () => {
+            hover.style.backgroundColor = "yellow";
+            hover.style.fontWeight = "bold";
+        })
+
+        // ex 2
+        let select = document.querySelector("#countries");
+        let img = document.querySelector("img");
+        select.addEventListener("change", function (event) {
+            console.log(event.target);
+            event.target.onclick = function () {
+                if (event.target.value === "jordan") {
+                    img.src = "jordan.png";
+
+                }
+                else if (event.target.value === "phlasten") {
+                    img.src = "palasten.jpg";
+
+                }
+                else {
+                    img.src = "syira.png";
+                }
+                img.style.display = "block";
+            }
+        })
+
+        // ex 3
+        let formPassword = document.querySelector(".form-password");
+        let spanPassword = document.querySelectorAll(".span-password");
+        let password = null;
+        formPassword[0].addEventListener("input", function () {
+            password = +formPassword[0].value;
+
+            if (formPassword[0].value.length < 8) {
+                spanPassword[0].textContent = "Too Short";
+                spanPassword[0].style.color = "red";
+            }
+            else
+                spanPassword[0].textContent = "";
+        });
+        formPassword[1].addEventListener("input", function () {
+            if (+formPassword[1].value !== password) {
+                spanPassword[1].textContent = "the two password don't match";
+                spanPassword[1].style.color = "red";
+            }
+            else
+                spanPassword[1].textContent = "";
+        });
+
+        // ex 4 
+        let boxContent = document.querySelectorAll(".box .content");
+        boxContent.forEach((el) => {
+            el.style.outline = "2px solid black";
+            el.style.margin = "8px";
+            el.style.display = "flex";
+            el.style.justifyContent = "space-between";
+            el.style.alignItems = "center";
+            el.style.backgroundColor = "#b2b2b2";
+        })
+        let boxh2 = document.querySelectorAll("h2");
+        boxh2.forEach((el) => {
+            el.style.display = "inline-block";
+            el.style.padding = "15px";
+
+        })
+
+        let boxP = document.querySelectorAll(".box p");
+        boxP.forEach((el) => {
+            el.style.display = "none";
+        })
+        let showP = document.querySelectorAll(".box .content span a");
+
+        showP.forEach((el, index) => {
+            el.style.padding = "15px";
+
+            el.addEventListener("click", function () {
+                if (this.textContent === "show") {
+                    boxP[index].style.display = "block";
+                    boxContent[index].style.display = "block";
+                    boxh2[index].style.display = "block";
+                    boxP[index].style.margin = "0";
+                    boxP[index].style.backgroundColor = "white";
+                    el.textContent = "Hide";
+                    el.style.backgroundColor = "white";
+                    boxP[index].style.padding = "8px";
+                    el.style.display = "block";
+                }
+                else {
+                    boxP[index].style.display = "none";
+                    boxContent[index].style.display = "flex";
+                    boxContent[index].style.justifyContent = "space-between";
+                    boxContent[index].style.alignItems = "center";
+                    el.textContent = "show";
+                    el.style.backgroundColor = "#b2b2b2";
+
+                }
+            })
+        });
+
+        // ex 5
+
+        let formText = document.querySelector(".change-text");
+        formText[0].style = "width : 150px";
+        formText[1].style = "width : 30px";
+
+        const fontMap = {
+            "Arial": "Arial, sans-serif",
+            "Roman": "'Times New Roman', serif",
+            "Courier New": "'Courier New', monospace",
+            "Verdana": "Verdana, sans-serif",
+            "Nosifer": "Nosifer, cursive"
+        };
+
+        formText[0].addEventListener("change", function () {
+            formText[5].style.fontFamily = fontMap[this.value];
+        });
+        formText[1].addEventListener("change", function () {
+            formText[5].style.fontSize = `${this.value}px`;
+        });
+        formText[2].addEventListener("click", function () {
+            if (formText[2].checked)
+                formText[5].style.fontStyle = "italic";
+            else
+                formText[5].style.fontStyle = "normal";
+
+        });
+
+        formText[3].addEventListener("click", function () {
+            if (formText[3].checked)
+                formText[5].style.fontWeight = "bold";
+            else
+                formText[5].style.fontWeight = 100;
+
+        });
+        formText[4].addEventListener("click", function () {
+            if (formText[4].checked)
+                formText[5].style.textDecoration = "underline";
+            else
+                formText[5].style.textDecoration = "none";
+
+        });
+
+
+
+        // ex 6 
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

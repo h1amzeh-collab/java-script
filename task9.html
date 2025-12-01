@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" class="data-personal">
+
+        <input type="text" placeholder="First Name"><br><br>
+        <input type="text" placeholder="Last Name"><br><br>
+
+
+        <input type="radio" name="gender" value="Male"> Male<br>
+        <input type="radio" name="gender" value="Female"> Female<br><br>
+
+        <input type="text" placeholder="Age"><br> <br>
+
+        <select name="major" id="major">
+            <option value="cs">Computer Science</option>
+            <option value="se">Software Engineering</option>
+            <option value="cis">Computer Information Systems</option>
+            <option value="mis">Management Information Systems (MIS)</option>
+            <option value="ai">Artificial Intelligence</option>
+            <option value="cyber">Cyber Security</option>
+            <option value="data_science">Data Science</option>
+            <option value="networking">Networks & Security</option>
+            <option value="game_dev">Game Development</option>
+            <option value="cloud_computing">Cloud Computing</option>
+            <option value="mobile_dev">Mobile Application Development</option>
+            <option value="web_dev">Web Development</option>
+            <option value="robotics">Robotics Programming</option>
+            <option value="iot">Internet of Things (IoT)</option>
+            <option value="business_it">Business Information Technology (BIT)</option>
+            <option value="health_informatics">Health Informatics</option>
+        </select><br><br>
+
+        <select id="university" name="university">
+            <option value="university_of_jordan">University of Jordan (UJ)</option>
+            <option value="yarmouk_university">Yarmouk University</option>
+            <option value="just">Jordan University of Science and Technology (JUST)</option>
+            <option value="mu'tah_university">Mu'tah University</option>
+            <option value="al_balqa">Al-Balqa Applied University</option>
+            <option value="hashemite_university">Hashemite University</option>
+            <option value="al_albayt">Al al-Bayt University</option>
+            <option value="german_jordanian">German Jordanian University (GJU)</option>
+            <option value="amman_ahliyya">Applied Science Private University (ASU)</option>
+            <option value="philadelphia">Philadelphia University</option>
+            <option value="petra">University of Petra (UOP)</option>
+            <option value="amman_arab">Amman Arab University</option>
+            <option value="zaytoonah">Al-Zaytoonah University of Jordan</option>
+            <option value="middle_east">Middle East University (MEU)</option>
+            <option value="jadara">Jadara University</option>
+            <option value="irbid_national">Irbid National University</option>
+            <option value="zarqa_university">Zarqa University</option>
+            <option value="ajloun_national">Ajloun National University</option>
+            <option value="al_isra">Al-Isra University</option>
+            <option value="al_ahliyya_amman">Al-Ahliyya Amman University (AAU)</option>
+        </select><br><br>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+
+            <label><input type="checkbox" name="c"> C</label>
+            <label><input type="checkbox" name="cpp"> C++</label>
+            <label><input type="checkbox" name="csharp"> C#</label>
+            <label><input type="checkbox" name="java"> Java</label>
+
+            <label><input type="checkbox" name="python"> Python</label>
+            <label><input type="checkbox" name="javascript"> JavaScript</label>
+            <label><input type="checkbox" name="typescript"> TypeScript</label>
+            <label><input type="checkbox" name="php"> PHP</label>
+
+            <label><input type="checkbox" name="ruby"> Ruby</label>
+            <label><input type="checkbox" name="swift"> Swift</label>
+            <label><input type="checkbox" name="kotlin"> Kotlin</label>
+            <label><input type="checkbox" name="go"> Go</label>
+
+            <label><input type="checkbox" name="rust"> Rust</label>
+            <label><input type="checkbox" name="dart"> Dart</label>
+            <label><input type="checkbox" name="scala"> Scala</label>
+            <label><input type="checkbox" name="r"> R</label>
+
+            <label><input type="checkbox" name="sql"> SQL</label>
+            <label><input type="checkbox" name="assembly"> Assembly</label>
+            <label><input type="checkbox" name="matlab"> MATLAB</label>
+
+        </div>
+
+        <br>
+        <input type="submit" value="next"><br><br><br><br><br>
+
+        <table border="2">
+
+        </table>
+
+
+
+    </form>
+
+    <script>
+        //         Task one: you should create a form for your personal data contains:
+        //             1 - Your name
+        //         2 - Your Age
+        //         3 - female or male
+        //         3 - Brief Description
+        //         4 - Your major and university
+        //         5 - Programming Language you prefer minimum 3 languages with the checklist
+        //         6 - Submit button
+
+        //         Note: you must store the date in the Local storage.
+        // In addition to rendering this information to the web page by using local storage by cards in your own styling way when the user clicks on the submit button.
+
+
+        let formData = document.querySelector(".data-personal");
+        let dataPersonalObject = {};
+        let count = 0;
+        formData[formData.length - 1].addEventListener("click", function (event) {
+            event.preventDefault();
+            if(count === 0){
+                count++;
+            dataPersonalObject.firstName = formData[0].value;
+            dataPersonalObject.lastName = formData[1].value;
+
+            let gender = document.querySelector("input[name='gender']:checked");
+            if (gender)
+                dataPersonalObject.gender = gender.value;
+            else
+                dataPersonalObject.gender = null;
+
+            dataPersonalObject.age = +formData[4].value;
+
+            let major = document.querySelector("#major");
+            dataPersonalObject.major = major.value;
+
+            let university = document.querySelector("#university");
+            dataPersonalObject.university = university.value;
+
+            let languages = document.querySelectorAll("input[type='checkbox']:checked");
+            dataPersonalObject.languages = [];
+            languages.forEach((el, i) => {
+                dataPersonalObject.languages[i] = el.name;
+
+            })
+            localStorage.setItem(localStorage.length, JSON.stringify(dataPersonalObject));
+
+        let table1 = document.querySelector("table");
+        let printDataPerson = JSON.parse(localStorage.getItem(localStorage.length - 1));
+        let tr1 = document.createElement("tr");
+        let td11 = document.createElement("td");
+        let td12 = document.createElement("td");
+        td11.textContent = "firstName ";
+        td12.textContent = printDataPerson.firstName;
+        tr1.append(td11, td12);
+
+        let tr2 = document.createElement("tr");
+        let td21 = document.createElement("td");
+        let td22 = document.createElement("td");
+        td21.textContent = "lastName ";
+        td22.textContent = printDataPerson.lastName;
+        tr2.append(td21, td22);
+
+        let tr3 = document.createElement("tr");
+        let td31 = document.createElement("td");
+        let td32 = document.createElement("td");
+        td31.textContent = "gender ";
+        td32.textContent = printDataPerson.gender;
+        tr3.append(td31, td32);
+
+        let tr4 = document.createElement("tr");
+        let td41 = document.createElement("td");
+        let td42 = document.createElement("td");
+        td41.textContent = "age ";
+        td42.textContent = printDataPerson.age;
+        tr4.append(td41, td42);
+
+        let tr5 = document.createElement("tr");
+        let td51 = document.createElement("td");
+        let td52 = document.createElement("td");
+        td51.textContent = "major ";
+        td52.textContent = printDataPerson.major;
+        tr5.append(td51, td52);
+
+        let tr6 = document.createElement("tr");
+        let td61 = document.createElement("td");
+        let td62 = document.createElement("td");
+        td61.textContent = "university";
+        td62.textContent = printDataPerson.university;
+        tr6.append(td61, td62);
+
+        let tr7 = document.createElement("tr");
+        let td71 = document.createElement("td");
+        let td72 = document.createElement("td");
+            td71.textContent = "languages ";
+
+        for (let i = 0; i < printDataPerson.languages.length; i++) {
+            td72.textContent += printDataPerson.languages[i] + " , ";
+        }
+            tr7.append(td71, td72);
+        table1.append(tr1,tr2,tr3,tr4,tr5,tr6,tr7);
+    }
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>

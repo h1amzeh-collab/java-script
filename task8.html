@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Start 1-->
+    <!--Start 1-->
+    <!--Start 1-->
+    <form action="" class="form-input">
+        Name <input type="text" class="name">
+        Email <input type="Email" class="email">
+        Mobile <input type="text">
+    </form>
+    <button>Click On Me to Print</button>
+
+    <br><br>
+    <hr>
+    <span></span>
+    <span></span>
+    <span></span>
+    <hr>
+    <table class="print" border="2"></table>
+
+    <!--End 1-->
+    <!--End 1-->
+    <!--End 1-->
+
+
+    <!--Start 2-->
+    <!--Start 2-->
+    <!--Start 2-->
+
+    <h2 style="background-color: rgb(42, 0, 110); padding: 8px; text-align: center; cursor: pointer; color: white;">
+        Click to show Table / Double click to hide Table</h2>
+
+    <!--End 2-->
+    <!--End 2-->
+    <!--End 2-->
+    <script>
+        //
+        //
+        //
+        // start 1
+        //
+        //
+        //
+        let form = document.querySelector("form");
+        let table1 = document.querySelector("table");
+        window.addEventListener("load", function () {
+
+            if (localStorage.length > 0) {
+
+                for (let i = 0; i < localStorage.length - 2;) {
+
+                    let tr = document.createElement("tr");
+                    index = i;
+                    for (let j = i; j <= index + 2; j++, i++) {
+                        let td1 = document.createElement("td");
+                        td1.textContent = localStorage.getItem(j);
+                        tr.append(td1);
+                    }
+
+                    table1.append(tr);
+                }
+            }
+
+        });
+
+        let button = document.querySelector("button")
+        button.addEventListener("click", function () {
+            localStorage.setItem(localStorage.length, form[0].value);
+            localStorage.setItem(localStorage.length, form[1].value);
+            localStorage.setItem(localStorage.length, form[2].value);
+            let span = document.querySelectorAll("span");
+            span.forEach((el) => {
+                el.style.display = "inline-block";
+            });
+            span[0].textContent = form[0].value;
+            span[1].textContent = form[1].value;
+            span[2].textContent = form[2].value;
+            span[0].style.backgroundColor = "red";
+            span[1].style.backgroundColor = "yellow";
+            span[2].style.backgroundColor = "blue";
+
+            let tr = document.createElement("tr");
+            let td1 = document.createElement("td");
+            let td2 = document.createElement("td");
+            let td3 = document.createElement("td");
+            td1.textContent = localStorage.getItem(localStorage.length - 3);
+            td2.textContent = localStorage.getItem(localStorage.length - 2);
+            td3.textContent = localStorage.getItem(localStorage.length - 1);
+            tr.append(td1, td2, td3);
+
+            table1.append(tr);
+
+        });
+        let table = document.querySelector("form");
+
+        //
+        //
+        //
+        // End 1
+        //
+        //
+        //
+
+
+        //
+        //
+        //
+        // start 2
+        //
+        //
+        //
+        let users = [];
+        fetch("jsonObject.json")
+            .then(response => response.json()) // يحوّل النص إلى object
+            .then(data => {
+                users = data.users;    // هذا object كامل
+                // console.log(users);
+            })
+            .catch(err => console.error(err));
+
+        let h2 = document.querySelector("h2");
+
+        h2.addEventListener("dblclick", function () {
+
+
+
+            let tableData = document.createElement("table");
+
+
+            tableData.className = "data";
+            document.body.append(tableData);
+
+            {
+                let rowHeader = document.createElement("tr");
+
+                let columnHeader1 = document.createElement("td");
+                columnHeader1.textContent = "firstName";
+
+                let columnHeader2 = document.createElement("td");
+                columnHeader2.textContent = "Mobile";
+
+                let columnHeader3 = document.createElement("td");
+                columnHeader3.textContent = "Email";
+
+
+                rowHeader.append(columnHeader1, columnHeader2, columnHeader3);
+                tableData.append(rowHeader);
+                //  tableData.style.display = "table-cell";
+                tableData.setAttribute("border", "2");
+
+                users.forEach((el, i) => {
+                    let row = document.createElement("tr");
+
+                    let column1 = document.createElement("td");
+                    column1.textContent = users[i].firstName;
+
+                    let column2 = document.createElement("td");
+                    column2.textContent = users[i].phone;
+
+                    let column3 = document.createElement("td");
+                    column3.textContent = users[i].email;
+                    row.append(column1, column2, column3);
+                    tableData.append(row);
+                })
+
+            }
+            //    users.forEach((el) =>{
+            //     let
+            //    })
+
+
+        })
+        h2.addEventListener("click", function () {
+            let oldTable = document.querySelector("table.data");
+            if (oldTable) oldTable.remove();
+
+        })
+
+
+
+        //
+        //
+        //
+        // End 2
+        //
+        //
+        //
+    </script>
+</body>
+
+</html>
